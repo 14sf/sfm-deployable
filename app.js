@@ -1,1 +1,1 @@
-console.log('SFM App Initialisé');
+console.log('SFM Figma-inspired app loaded');
