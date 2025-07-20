@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SFM - Éditeur de Traductions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    th {
+      background: #FFD700;
+      color: #000;
+    }
+    td[contenteditable="true"] {
+      background-color: #f9f9f9;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      background: #000;
+      color: #FFD700;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 SFM – Traduction multilingue</h1>
+  <table id="translation-table">
+    <thead>
+      <tr>
+        <th>Clé</th>
+        <th>🇫🇷 Français</th>
+        <th>🇬🇧 Anglais</th>
+        <th>🇷🇼 Kinyarwanda</th>
+        <th>🇰🇪 Swahili</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button onclick="saveTranslations()">💾 Sauvegarder</button>
+  <button onclick="exportJSON()">📤 Export JSON</button>
+
+  <script>
+    const defaultTranslations = {
+      heroTitle: ["SFM – Songa Finance Manager", "SFM – Songa Finance Manager", "SFM – Umujyanama w’Imari", "SFM – Msimamizi wa Fedha"],
+      heroSubtitle: ["Votre assistant personnel...", "Your personal assistant...", "Umufasha wawe mu micungire y’imari...", "Msaidizi wako wa kifedha..."],
+      startBtn: ["Commencer", "Get Started", "Tangira", "Anza"],
+      featuresTitle: ["Fonctionnalités clés", "Key Features", "Iby’ingenzi", "Vipengele Muhimu"],
+      feature1Title: ["Suivi des dépenses", "Expense Tracking", "Gukurikirana amafaranga", "Ufuatiliaji wa matumizi"],
+      feature1Text: ["Visualisez où va votre argent...", "See where your money goes...", "Reba aho amafaranga yawe ajya...", "Angalia matumizi yako..."],
+      feature2Title: ["Budgets intelligents", "Smart Budgets", "Ingengo y’imari ifatika", "Bajeti za kisasa"],
+      feature2Text: ["Créez des budgets par catégorie...", "Create budgets by category...", "Tegura ingengo hakurikijwe ibyiciro...", "Tengeneza bajeti kwa urahisi..."],
+      feature3Title: ["Données sécurisées", "Secure Data", "Amakuru arinzwe", "Taarifa salama"],
+      feature3Text: ["Vos informations sont protégées...", "Your info is protected...", "Amakuru yawe arinzwe...", "Taarifa zako ni salama..."],
+      footer: ["Tous droits réservés", "All rights reserved", "Uburenganzira bwose burabitswe", "Haki zote zimehifadhiwa"]
+    };
+
+    const tableBody = document.querySelector("#translation-table tbody");
+
+    function loadTranslations() {
+      const stored = JSON.parse(localStorage.getItem("sfm_translations") || "null") || defaultTranslations;
+      for (let key in stored) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${key}</td>
+          <td contenteditable="true">${stored[key][0]}</td>
+          <td contenteditable="true">${stored[key][1]}</td>
+          <td contenteditable="true">${stored[key][2]}</td>
+          <td contenteditable="true">${stored[key][3]}</td>
+        `;
+        tableBody.appendChild(row);
+      }
+    }
+
+    function saveTranslations() {
+      const rows = tableBody.querySelectorAll("tr");
+      const result = {};
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const key = cells[0].textContent.trim();
+        const fr = cells[1].textContent.trim();
+        const en = cells[2].textContent.trim();
+        const rw = cells[3].textContent.trim();
+        const sw = cells[4].textContent.trim();
+        result[key] = [fr, en, rw, sw];
+      });
+      localStorage.setItem("sfm_translations", JSON.stringify(result));
+      alert("✅ Traductions sauvegardées !");
+    }
+
+    function exportJSON() {
+      const data = localStorage.getItem("sfm_translations");
+      const blob = new Blob([data], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "sfm_translations.json";
+      link.click();
+    }
+
+    loadTranslations();
+  </script>
+</body>
+</html>

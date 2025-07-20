@@ -1,26 +1,28 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-  color: #333;
+  background: #fff;
+  color: #000;
+}
+
+.lang-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+select {
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #000;
+  color: #FFD700;
+  padding: 100px 20px;
   text-align: center;
-  padding: 20px;
-}
-
-.content {
-  max-width: 600px;
-  background: #ffffffcc;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .content h1 {
@@ -28,25 +30,103 @@ body {
   margin-bottom: 20px;
 }
 
-.content h1 .highlight {
-  color: #1e90ff;
-}
-
 .content p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 30px;
 }
 
 .btn-primary {
-  background-color: #1e90ff;
-  color: #fff;
+  background-color: #FFD700;
+  color: #000;
   padding: 12px 24px;
-  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #007acc;
+  background-color: #e6c200;
+}
+
+.carousel-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.carousel-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  padding: 30px;
+  background: #000;
+  color: #FFD700;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.carousel-slide h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+button.prev, button.next {
+  background-color: #FFD700;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+button.prev {
+  left: -30px;
+}
+
+button.next {
+  right: -30px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #FFD700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  button.prev, button.next {
+    display: none;
+  }
 }

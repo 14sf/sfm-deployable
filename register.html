@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer un compte – SFM</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo"><img src="sfm-logo.jpeg" alt="SFM Logo" class="logo-img"></div>
+    <nav class="main-nav">
+      <a href="index.html">Accueil</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 400px; margin: 60px auto; padding: 20px; background:#f9f9f9; border-radius: 10px; text-align: center;">
+    <h2>Créer un compte</h2>
+    <form style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+      <input type="text" placeholder="Nom complet" required style="padding: 10px; font-size: 1rem;">
+      <input type="email" placeholder="Email" required style="padding: 10px; font-size: 1rem;">
+      <input type="password" placeholder="Mot de passe" required style="padding: 10px; font-size: 1rem;">
+      <button type="submit" style="background-color: #FFD700; color: #000; border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 6px;">
+        Créer mon compte
+      </button>
+    </form>
+    <p style="margin-top: 20px;">Déjà un compte ? <a href="dashboard.html">Accéder au tableau</a></p>
+  </main>
+
+  <footer class="site-footer" style="margin-top:60px;">
+    <p>&copy; 2025 SFM – Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
