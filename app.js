@@ -1,0 +1,1 @@
+console.log('SFM App Initialisé');
