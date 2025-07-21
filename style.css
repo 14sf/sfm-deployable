@@ -1,132 +1,135 @@
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #fff;
-  color: #000;
-}
+body { background: white; }
 
-.lang-switcher {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-select {
-  padding: 6px;
-  font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.hero {
-  background-color: #000;
-  color: #FFD700;
-  padding: 100px 20px;
-  text-align: center;
-}
-
-.content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.btn-primary {
-  background-color: #FFD700;
-  color: #000;
-  padding: 12px 24px;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #e6c200;
-}
-
-.carousel-section {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-.carousel-section h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
-
-.carousel {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  padding: 30px;
+.footer {
   background: #000;
   color: #FFD700;
-  border-radius: 10px;
-  box-sizing: border-box;
+  padding: 40px 20px 20px;
 }
-
-.carousel-slide h3 {
-  margin-top: 0;
-  font-size: 1.5rem;
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
 }
-
-button.prev, button.next {
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+.footer-column h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+.footer-column ul a {
+  color: #FFD700;
+  text-decoration: none;
+}
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.newsletter-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+.newsletter-form button {
   background-color: #FFD700;
   color: #000;
   border: none;
-  padding: 10px 16px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
+  padding: 10px;
   font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 50%;
 }
-
-button.prev {
-  left: -30px;
-}
-
-button.next {
-  right: -30px;
-}
-
-footer {
+.footer-bottom {
   text-align: center;
-  padding: 20px;
-  background: #000;
-  color: #FFD700;
-  font-size: 0.9rem;
+  margin-top: 40px;
+  font-size: 14px;
+}
+@media screen and (max-width: 768px) {
+  .footer-columns {
+    flex-direction: column;
+  }
 }
 
-@media (max-width: 600px) {
-  button.prev, button.next {
-    display: none;
-  }
+
+.pricing-section {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+.pricing-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.plan-card {
+  background: #fff;
+  border: 2px solid #FFD700;
+  border-radius: 10px;
+  padding: 30px;
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.plan-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.plan-card p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+.plan-card ul li {
+  margin-bottom: 10px;
+}
+.plan-card .cta-btn {
+  background: #FFD700;
+  color: #000;
+  padding: 12px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+}
+.btn-disabled {
+  background: #ccc;
+  color: #666;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+
+.carousel {
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300%;
+}
+.carousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 10px;
 }

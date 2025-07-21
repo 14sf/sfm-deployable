@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SFM – Offres</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <img src="sfm-logo.jpeg" alt="Logo SFM" class="logo-img"/>
+      <nav id="nav" class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#plans">Offres</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Choisissez votre plan SFM</h1>
+      <p>Accédez à plus de puissance et de fonctionnalités avec SFM Pro.</p>
+    </div>
+  </section>
+
+  <section id="plans" class="pricing-section">
+    <div class="container">
+      <div class="pricing-table">
+        <div class="plan-card free-plan">
+          <h3>Gratuit</h3>
+          <p>0 FCFA / mois</p>
+          <ul>
+            <li>📊 Suivi des dépenses</li>
+            <li>📈 Visualisation simple</li>
+            <li>🌐 Accès limité</li>
+          </ul>
+          <button disabled class="btn-disabled">Actif</button>
+        </div>
+
+        <div class="plan-card pro-plan">
+          <h3>SFM Pro</h3>
+          <p>3 500 FCFA / mois</p>
+          <ul>
+            <li>✔️ Tableau de bord avancé</li>
+            <li>✔️ Multi-utilisateur (famille)</li>
+            <li>✔️ Sauvegarde dans le cloud</li>
+            <li>✔️ Support prioritaire</li>
+          </ul>
+          <a href="#" class="cta-btn">S’abonner</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="footer">
+    <div class="container footer-content">
+      <p class="footer-bottom">&copy; 2025 SFM – Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('nav-open');
+    });
+  </script>
+</body>
+</html>
