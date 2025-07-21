@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Dashboard</title></head><body><p>Dashboard SFM</p></body></html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard SFM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">SFM</div>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="pricing.html">Offre Pro</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Mon tableau de bord</h2>
+    <p>Suivez vos finances en temps réel.</p>
+  </section>
+
+  <section style="padding: 20px;">
+    <input type="text" id="label" placeholder="Libellé" />
+    <input type="number" id="amount" placeholder="Montant" />
+    <select id="type">
+      <option value="revenu">Revenu</option>
+      <option value="depense">Dépense</option>
+    </select>
+    <button onclick="addTransaction()">Ajouter</button>
+
+    <h3>Solde : <span id="balance">0 FCFA</span></h3>
+    <ul id="history"></ul>
+    <canvas id="chart" width="400" height="200"></canvas>
+  </section>
+
+  <script>
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+    function updateDashboard() {
+      let balance = 0;
+      const history = document.getElementById('history');
+      const labels = [];
+      const data = [];
+
+      history.innerHTML = '';
+      transactions.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = `${t.label} : ${t.amount} FCFA (${t.type})`;
+        history.appendChild(li);
+        if (t.type === 'revenu') balance += t.amount;
+        else balance -= t.amount;
+
+        if (t.type === 'depense') {
+          labels.push(t.label);
+          data.push(t.amount);
+        }
+      });
+
+      document.getElementById('balance').textContent = balance.toLocaleString() + ' FCFA';
+
+      new Chart(document.getElementById('chart').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+          labels,
+          datasets: [{
+            data,
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+          }]
+        }
+      });
+    }
+
+    function addTransaction() {
+      const label = document.getElementById('label').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      const type = document.getElementById('type').value;
+      if (!label || isNaN(amount)) return;
+
+      transactions.push({ label, amount, type });
+      localStorage.setItem('transactions', JSON.stringify(transactions));
+      updateDashboard();
+      document.getElementById('label').value = "";
+      document.getElementById('amount').value = "";
+    }
+
+    window.onload = updateDashboard;
+  </script>
+</body>
+</html>
